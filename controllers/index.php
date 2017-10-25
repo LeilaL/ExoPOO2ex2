@@ -1,12 +1,27 @@
 <?php
 require ("../entities/Client.php");
 require ("../entities/Produit.php");
+require ("../model/ClientManager.php");
 
 //Instance of new Client
-$my_client = new Client("Toto", 56);
-$my_product  = new Produit("Voiture");
+$data = [
+  "id"=>"3",
+  "name"=>"brandon",
+  "age"=>"35"
+];
 
-$my_client->addProductToBasket($my_product);
+$ClientManager= new ClientManager();
+
+$clients= $ClientManager->getAllClients();
+var_dump($clients);
+
+foreach ($clients as $key => $value) {
+  $clients[$key] = new Client($value);
+}
+var_dump($clients);
+
+$my_client= new Client($data);
+
 
 
 include "../views/indexVue.php";
