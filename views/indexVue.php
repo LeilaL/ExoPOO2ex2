@@ -31,18 +31,13 @@
   </fieldset>
 </form>
 
-<?php  foreach ($chats as $chat) {
+<?php
+ header( "refresh:5;url=../controllers/index.php" ); 
+foreach ($chats as $chat) {
 ?>
 
 <div>
-  <h1>Chat N° <?php echo $chat->getId()?></h1>
-  <p><?php echo $chat->getNom()?></p><br>
-  <br>
-  <p><?php echo $chat->getAge()?></p><br>
-  <br>
-  <p><?php echo $chat->getSexe()?></p><br>
-  <br>
-  <p><?php echo $chat->getCouleur()?></p>
+  <p><?php echo $chat->getNom()?> <?php echo $chat->getAge()?> <?php echo $chat->getSexe()?> <?php echo $chat->getCouleur()?></p>
 </div>
 
 <?php } ?>

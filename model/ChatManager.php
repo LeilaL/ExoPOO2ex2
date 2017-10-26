@@ -8,14 +8,14 @@ class ChatManager {
   }
 
 
-  public function insertChats($nom,$age,$sexe,$couleur){
+  public function insertChats(chat $c){
     $req=$this->getBdd()->prepare('INSERT INTO chats(nom, age, sexe, couleur)
     VALUES(:nom, :age, :sexe, :couleur)');
-      $req->bindValue(':nom', $data->getNom());
-      $req->bindValue(':age', $data->getAge(), PDO::PARAM_INT);
- $req->bindValue(':sexe', $data->getSexe(), PDO::PARAM_STR);
- $req->bindValue(':couleur', $data->getCouleur(), PDO::PARAM_STR);
-    // ));
+    // $req->bindValue(':id', getId());
+      $req->bindValue(':nom', $c->getNom());
+      $req->bindValue(':age', $c->getAge(), PDO::PARAM_INT);
+ $req->bindValue(':sexe', $c->getSexe(), PDO::PARAM_STR);
+ $req->bindValue(':couleur', $c->getCouleur(), PDO::PARAM_STR);
     $req->execute();
     }
 

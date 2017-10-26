@@ -17,7 +17,9 @@ const COULEUR = [
   4 => "roux",
   5 => "marron"
 ];
-  //Setters
+
+
+  // Setters
   // public function setId($id) {
   //   $this->id = $id;
   // }
@@ -28,7 +30,7 @@ const COULEUR = [
     }
   }
 
-  public function setAge(int $age) {
+  public function setAge($age) {
     if ($age >= 0 && $age <= 30) {
       $this->age = $age;
     }
