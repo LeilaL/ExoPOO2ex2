@@ -1,28 +1,47 @@
 <?php
-require ("../entities/Client.php");
-require ("../entities/Produit.php");
-require ("../model/ClientManager.php");
+require ("../entities/Chat.php");
+require ("../model/ChatManager.php");
 
 //Instance of new Client
 $data = [
-  "id"=>"3",
-  "name"=>"brandon",
-  "age"=>"35"
+    // 'nom' => $nom,
+    // 'age' => $age,
+    // 'sexe' => $sexe,
+    // 'couleur' => $couleur
+    $nom = $_POST['nom'],
+    $age = $_POST['age'],
+    $sexe = $_POST['sexe'],
+    $couleur = $_POST['couleur']
 ];
 
-$ClientManager= new ClientManager();
+$ChatManager= new ChatManager();
 
-$clients= $ClientManager->getAllClients();
-var_dump($clients);
-
-foreach ($clients as $key => $value) {
-  $clients[$key] = new Client($value);
+if (!empty($_POST)) {
+  // if (empty($_POST['nom'])){
+  //   echo 'vous devez entrer un nom';
+  // }
+  // else {
+  //   if (!empty($_POST['nom']) && $_POST['nom'].length<=15){
+  //   $name = $_POST['nom'];
+  //   }
+  // }
+  $nom = $_POST['nom'];
+  $age = $_POST['age'];
+  $sexe = $_POST['sexe'];
+  $couleur = $_POST['couleur'];
+  $cats = $ChatManager->insertChats($nom,$age,$sexe,$couleur);
 }
-var_dump($clients);
 
-$my_client= new Client($data);
+$chats= $ChatManager->getAllChats();
+// var_dump($chats);
+foreach ($chats as $key => $value) {
+  $chats[$key] = new Chat($value);
+}
+// var_dump($chats);
+$my_chat= new Chat($data);
 
 
 
 include "../views/indexVue.php";
+// include "../views/homeVue.php";
  ?>
